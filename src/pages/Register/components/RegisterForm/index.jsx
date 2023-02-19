@@ -15,7 +15,7 @@ function RegisterForm(){
               <div className={styles.back_desktop}>
                 <img
                   className={styles.img_desktop}
-                  src="/img/form__image.svg"
+                  src="/Aqua_React/img/form__image.svg"
                   alt=""
                 />
                 <h3 className={styles.desktop_title}>Bienvenido</h3>
@@ -28,7 +28,11 @@ function RegisterForm(){
           )}
           <div className={styles.sub_container}>
             <figure>
-              <img src="/img/logo.png" alt="" className={styles.form__logo} />
+              <img
+                src="/Aqua_React/img/logo.png"
+                alt=""
+                className={styles.form__logo}
+              />
             </figure>
             <div className={styles.form__container}>
               <h2 className={styles.form__title}>REGISTRATE</h2>

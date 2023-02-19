@@ -13,7 +13,7 @@ function LoginForm(){
           {width && (
             <div className={styles.desktop__container}>
               <div className={styles.back_desktop}>
-                <img className={styles.img_desktop} src="/img/form__image.svg" alt="" />
+                <img className={styles.img_desktop} src="/Aqua_React/img/form__image.svg" alt="" />
                 <h3 className={styles.desktop_title}>Bienvenido</h3>
                 <p className={styles.text_desktop}>Para acceder a la aplicacion debes iniciar sesión, si no estas registrado, puedes hacerlo con el boton de abajo  </p>
               </div>
@@ -21,7 +21,7 @@ function LoginForm(){
           )}
           <div className={styles.sub_container}>
             <figure>
-              <img src="/img/logo.png" alt="" className={styles.form__logo} />
+              <img src="/Aqua_React/img/logo.png" alt="" className={styles.form__logo} />
             </figure>
             <div className={styles.form__container}>
               <h2 className={styles.form__title}>INICIA SESION</h2>
