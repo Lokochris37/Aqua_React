@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Landing } from './pages/Landing/Landing';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
 
@@ -12,7 +12,7 @@ function App() {
           {}
         </Navbar> */}
         <Routes>
-          <Route path='/' element={<Landing/>}/>
+          <Route path='/' element={<Navigate to={"/login"}/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
         </Routes>

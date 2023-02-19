@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './LoginForm.module.css'
 import { useScreenSize } from "../../../../hooks/useMedia";
+import { Link } from "react-router-dom";
 
 function LoginForm(){
 
@@ -44,9 +45,9 @@ function LoginForm(){
                   id="Password"
                   className={styles.form__input}
                 />
-                <a href="/register" className={styles.form__register_link}>
+                <Link to={"/register"} className={styles.form__register_link}>
                   ¿No estas registrado?
-                </a>
+                </Link>
 
                 <button type="submit" className={styles.form__submit_btn}>
                   Iniciar sesión

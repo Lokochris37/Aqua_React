@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './RegisterForm.module.css'
 import { useScreenSize } from "../../../../hooks/useMedia";
+import { Link } from "react-router-dom";
 
 function RegisterForm(){
 
@@ -60,9 +61,9 @@ function RegisterForm(){
                   id="Password"
                   className={styles.form__input}
                 />
-                <a href="/login" className={styles.form__register_link}>
+                <Link to={"/login"} className={styles.form__register_link}>
                   ¿Ya tienes una cuenta?
-                </a>
+                </Link>
 
                 <button type="submit" className={styles.form__submit_btn}>
                   Registrarse
