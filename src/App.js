@@ -4,6 +4,7 @@ import { Landing } from './pages/Landing/Landing';
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import { Login } from './pages/Login/Login';
 import { Register } from './pages/Register/Register';
+import { UserPanelWithAuth } from './pages/UserPanel/UserPanel';
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
           {}
         </Navbar> */}
         <Routes>
-          <Route path='/Aqua_React' element={<Navigate to={"/login"}/>}/>
+          <Route path='/' element={<Landing/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/panel' element={<UserPanelWithAuth/>}/>
         </Routes>
       </Router>
     );

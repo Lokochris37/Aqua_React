@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
+.grid{
+    width: 100wv;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: fixed;
+    z-index: 1;
+}
+
+
+.container__info{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.title__container{
+    margin: 5rem 7rem;
+}
+
+.subtitle{
+    font-size: 5rem;
+    color: rgb(53, 53, 53);
+    margin: 0;
+    font-family: 'Phudu', cursive;
+}
+.title{
+    font-size: 15rem;
+    margin: 0;
+    margin-bottom: 2rem;
+    font-family: 'Phudu', cursive;
+    background: linear-gradient(to right, #0000ff, #35cec6, #443b97);
+	background-clip: text;
+    color: #ffffff00;
+    background-size: 600% 600%;
+	animation: moveGradient 5s ease infinite;
+}
+
+@keyframes moveGradient {
+ 0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+  }
+
+}
+.text{
+    font-size: 1.2rem;
+
+}
+
+.btn__container{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 7rem;
+}
+
+.button{
+    border: 0;
+    background: none;
+    margin: 0 5px;
+    border-radius: 7px;
+    height: 40px;
+    width: 120px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn__variant1{
+    background-color: rgb(60, 90, 117);
+    color: white;
+}
+
+.btn__variant2{
+    border: solid 1px black;
+
+}
+
+
+.container__images{
+}
+

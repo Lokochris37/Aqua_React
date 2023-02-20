@@ -1,9 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './RegisterForm.module.css'
 import { useScreenSize } from "../../../../hooks/useMedia";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { app } from "../../../../global/firebase.js";
+import { getAuth  } from "firebase/auth";
+import { useAuth } from "../../../../hooks/useAuth";
+
+const auth = getAuth(app);
+
 
 function RegisterForm(){
+
+  const {CreateUserWithEmailAndPassword} = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [coPassword, setCoPassword] = useState("");
+
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleCoPasswordChange = (event) => {
+    setCoPassword(event.target.value);
+  }
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleFormSubmit = (event)=>{
+    event.preventDefault();
+    if(password === coPassword){
+      CreateUserWithEmailAndPassword(auth, email, password);
+    }
+    else{
+      alert("Las contraseñas no coinciden")
+    }
+    
+  }
+
 
     const width = useScreenSize();
 
@@ -15,7 +52,7 @@ function RegisterForm(){
               <div className={styles.back_desktop}>
                 <img
                   className={styles.img_desktop}
-                  src="/Aqua_React/img/form__image.svg"
+                  src="/img/form__image.svg"
                   alt=""
                 />
                 <h3 className={styles.desktop_title}>Bienvenido</h3>
@@ -28,16 +65,16 @@ function RegisterForm(){
           )}
           <div className={styles.sub_container}>
             <figure>
-              <img
-                src="/Aqua_React/img/logo.png"
-                alt=""
-                className={styles.form__logo}
-              />
+              <img src="/img/logo.png" alt="" className={styles.form__logo} />
             </figure>
             <div className={styles.form__container}>
               <h2 className={styles.form__title}>REGISTRATE</h2>
               <h3 className={styles.form__subtitle}>Bienvenido a Aqua</h3>
-              <form action="" className={styles.form}>
+              <form
+                action=""
+                onSubmit={handleFormSubmit}
+                className={styles.form}
+              >
                 <label htmlFor="email" className={styles.form__label}>
                   Correo electronico
                 </label>
@@ -45,24 +82,35 @@ function RegisterForm(){
                   placeholder="Ingresa tu e-mail"
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={handleEmailChange}
                   className={styles.form__input}
+                  required={true}
                 />
-                <label htmlFor="user" className={styles.form__label}>
-                  Nombre de usuario
-                </label>
-                <input
-                  placeholder="Nombre de usuario"
-                  type="text"
-                  id="user"
-                  className={styles.form__input}
-                />
-                <label htmlFor="Password" className={styles.form__label}>
+                <label htmlFor="password" className={styles.form__label}>
                   Contraseña
                 </label>
                 <input
                   placeholder="••••••••••••••"
                   type="password"
-                  id="Password"
+                  id="password"
+                  required={true}
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  className={styles.form__input}
+                />
+                <label htmlFor="co-password" className={styles.form__label}>
+                  Contraseña
+                </label>
+                <input
+                  placeholder="••••••••••••••"
+                  type="password"
+                  id="co-password"
+                  name="co-password"
+                  value={coPassword}
+                  required={true}
+                  onChange={handleCoPasswordChange}
                   className={styles.form__input}
                 />
                 <Link to={"/login"} className={styles.form__register_link}>
