@@ -13,7 +13,7 @@ function App() {
           {}
         </Navbar> */}
         <Routes>
-          <Route path='/' element={<Landing/>}/>
+          <Route path='Aqua_React/' element={<Landing/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/panel' element={<UserPanelWithAuth/>}/>

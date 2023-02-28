@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { app } from "../../../../global/firebase.js";
 import { getAuth } from "firebase/auth";
 import { useAuth } from "../../../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth(app);
 
-
 function LoginForm() {
-  
-  const {SignInWithEmailAndPassword} = useAuth();
 
+  const navigate = useNavigate();
 
   const width = useScreenSize();
 
@@ -29,9 +29,25 @@ function LoginForm() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    SignInWithEmailAndPassword(auth, email, password)
+    SignInWithEmailAndPassword(auth, email, password);
   };
-
+  const SignInWithEmailAndPassword = async (auth, email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          // Usuario ha iniciado sesión
+          const user = userCredential.user;
+          navigate("/");
+        }
+      );
+    } catch (error) {
+      // Error de inicio de sesión
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
+    }
+  };
   return (
     <>
       <div className={styles.container}>
@@ -40,7 +56,7 @@ function LoginForm() {
             <div className={styles.back_desktop}>
               <img
                 className={styles.img_desktop}
-                src="img/form__image.svg"
+                src="/Aqua_React/img/form__image.svg"
                 alt=""
               />
               <h3 className={styles.desktop_title}>Bienvenido</h3>
@@ -53,7 +69,11 @@ function LoginForm() {
         )}
         <div className={styles.sub_container}>
           <figure>
-            <img src="img/logo.png" alt="" className={styles.form__logo} />
+            <img
+              src="/Aqua_React/img/logo.png"
+              alt=""
+              className={styles.form__logo}
+            />
           </figure>
           <div className={styles.form__container}>
             <h2 className={styles.form__title}>INICIA SESION</h2>

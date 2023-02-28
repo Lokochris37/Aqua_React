@@ -4,19 +4,26 @@ import { useScreenSize } from "../../../../hooks/useMedia";
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../../../../global/firebase.js";
 import { getAuth  } from "firebase/auth";
-import { useAuth } from "../../../../hooks/useAuth";
+import {useAuth} from "../../../../hooks/useAuth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from "../../../../global/firebase.js";
+import { doc, setDoc, collection } from "firebase/firestore";
 
 const auth = getAuth(app);
 
 
 function RegisterForm(){
-
-  const {CreateUserWithEmailAndPassword} = useAuth();
+  
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [coPassword, setCoPassword] = useState("");
+  const [name, setName] = useState('');
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -30,11 +37,33 @@ function RegisterForm(){
     setPassword(event.target.value);
   };
 
+   const CreateUserWithEmailAndPassword = async (
+     auth,
+     name,
+     email,
+     password
+   ) => {
+     try {
+       const userCredential = await createUserWithEmailAndPassword(
+         auth,
+         email,
+         password
+       );
+       const user = userCredential.user;
+       await setDoc(doc(db, "users", user.uid), { name, email });
+       navigate("/login");
+     } catch (error) {
+       const errorCode = error.code;
+       const errorMessage = error.message;
+       console.error("Error al registrar usuario:", error);
+     }
+   };
+
   const handleFormSubmit = (event)=>{
     event.preventDefault();
     if(password === coPassword){
-      CreateUserWithEmailAndPassword(auth, email, password);
-    }
+      CreateUserWithEmailAndPassword(auth, name, email, password);
+    } 
     else{
       alert("Las contraseñas no coinciden")
     }
@@ -52,7 +81,7 @@ function RegisterForm(){
               <div className={styles.back_desktop}>
                 <img
                   className={styles.img_desktop}
-                  src="/img/form__image.svg"
+                  src="/Aqua_React/img/form__image.svg"
                   alt=""
                 />
                 <h3 className={styles.desktop_title}>Bienvenido</h3>
@@ -65,7 +94,11 @@ function RegisterForm(){
           )}
           <div className={styles.sub_container}>
             <figure>
-              <img src="/img/logo.png" alt="" className={styles.form__logo} />
+              <img
+                src="/Aqua_React/img/logo.png"
+                alt=""
+                className={styles.form__logo}
+              />
             </figure>
             <div className={styles.form__container}>
               <h2 className={styles.form__title}>REGISTRATE</h2>
@@ -75,6 +108,18 @@ function RegisterForm(){
                 onSubmit={handleFormSubmit}
                 className={styles.form}
               >
+                <label htmlFor="email" className={styles.form__label}>
+                  Nombre de usuario
+                </label>
+                <input
+                  placeholder="Nombre"
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={handleNameChange}
+                  className={styles.form__input}
+                  required={true}
+                />
                 <label htmlFor="email" className={styles.form__label}>
                   Correo electronico
                 </label>

@@ -16,10 +16,10 @@ function Navbar(){
       <navbar className={styles.navbar}>
         <div className={styles.container}>
           <figure className={styles.logo__container}>
-            <img src="/img/logo.png" alt="" className={styles.logo}/>
+            <img src="/Aqua_React/img/logo.png" alt="" className={styles.logo} />
           </figure>
           <div className={styles.grid}>
-            {isCollapse ? <p>A</p> : <Link to={"/"}>Home</Link>}
+            {isCollapse ? <p>A</p> : <Link to={"/Aqua_React/"}>Home</Link>}
           </div>
         </div>
       </navbar>
