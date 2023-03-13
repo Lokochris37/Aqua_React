@@ -1,8 +1,29 @@
-import React from 'react'
-import styles from './LandingScreen.module.css'
-import {  useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import styles from "./LandingScreen.module.css";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { app } from "../../../../global/firebase";
+
 
 function LandingScreen() {
+  const [id, setId] =  useState('')
+  React.useEffect(() => {
+          const auth = getAuth(app);
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // El usuario está autenticado, aquí puedes acceder a su sesión
+        setId(user.uid);
+      } else {
+        // El usuario no está autenticado
+        console.log("No hay sesión activa");
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   const navigate = useNavigate();
 
   return (
@@ -26,7 +47,7 @@ function LandingScreen() {
             Empecemos
           </button>
           <button
-            onClick={() => navigate("/panel")}
+            onClick={() => navigate(`/panel/${id}/`)}
             className={`${styles.button} ${styles.btn__variant2}`}
           >
             Panel de usuario
@@ -38,4 +59,4 @@ function LandingScreen() {
   );
 }
 
-export {LandingScreen}
+export { LandingScreen };

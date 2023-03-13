@@ -4,7 +4,6 @@ import { useScreenSize } from "../../../../hooks/useMedia";
 import { Link } from "react-router-dom";
 import { app } from "../../../../global/firebase.js";
 import { getAuth } from "firebase/auth";
-import { useAuth } from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -37,7 +36,7 @@ function LoginForm() {
         (userCredential) => {
           // Usuario ha iniciado sesión
           const user = userCredential.user;
-          navigate("/");
+          navigate("/Aqua_React");
         }
       );
     } catch (error) {
@@ -72,6 +71,7 @@ function LoginForm() {
             <img
               src="/Aqua_React/img/logo.png"
               alt=""
+              onClick={() => navigate("/Aqua_React")}
               className={styles.form__logo}
             />
           </figure>

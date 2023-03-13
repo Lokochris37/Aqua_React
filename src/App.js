@@ -16,7 +16,7 @@ function App() {
           <Route path='Aqua_React/' element={<Landing/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/panel' element={<UserPanelWithAuth/>}/>
+          <Route path='/panel/:userId' element={<UserPanelWithAuth/>}/>
         </Routes>
       </Router>
     );

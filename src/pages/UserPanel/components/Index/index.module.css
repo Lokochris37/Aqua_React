@@ -1,7 +1,13 @@
 .container{
-    display: flex;
-    align-items: center;
-    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:repeat(2,1fr) ;
+    grid-template-areas: 
+    "Record Register Register"
+    "Record Calc Calc";
+    height: 90vh;
     padding-top: 6rem;
+    justify-items: center;
+    align-items: center;
 }
 

@@ -4,7 +4,6 @@ import { useScreenSize } from "../../../../hooks/useMedia";
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../../../../global/firebase.js";
 import { getAuth  } from "firebase/auth";
-import {useAuth} from "../../../../hooks/useAuth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../../../../global/firebase.js";
 import { doc, setDoc, collection } from "firebase/firestore";
@@ -98,6 +97,7 @@ function RegisterForm(){
                 src="/Aqua_React/img/logo.png"
                 alt=""
                 className={styles.form__logo}
+                onClick={() => navigate("/Aqua_React")}
               />
             </figure>
             <div className={styles.form__container}>

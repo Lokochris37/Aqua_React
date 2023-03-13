@@ -5,17 +5,20 @@ import { Index } from "./components/Index";
 import { RecentRecords } from "./components/RecentRecords";
 import { AddUser } from "./components/AddUser";
 import styles from './UserPanel.module.css'
+import { Calculator } from "./components/Calculator";
+import { useParams } from "react-router-dom";
 
-function UserPanel(){
-
+function UserPanel(props){
+  const {userId} = useParams()
     return (
-      <div classname={styles.container}>
+      <>
         <Navbar />
         <Index>
-          <RecentRecords />
+          <RecentRecords  id={userId}/>
           <AddUser />
+          <Calculator/>
         </Index>
-      </div>
+      </>
     );
 }
 

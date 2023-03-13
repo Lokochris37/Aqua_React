@@ -1,47 +1,59 @@
 .container {
-    grid-area: Register;
+    grid-area: Calc;
     border: 1px solid black;
-    width: 50%;
+    width: 90%;
     min-width: 250px;
     height: 25rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     border-radius: 8px;
-}
 
-.title{
+}
+.title {
 
     color: rgb(54, 54, 54);
     font-size: 2rem;
 }
 
-.form{
+.form {
     height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+}
+.cont__form{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
 }
 
-.label{
+.label {
     margin: 5px;
-    width: 90%;
+    width: auto;
     text-align: left;
     font-size: 1.2rem;
     font-weight: bold;
     color: rgb(47, 93, 136);
 }
 
-.input{
-    width: 90%;
+.input {
+    width: 100%;
 }
-.submit{
+
+.submit {
     margin: 10px;
     border-radius: 10px;
     border: 1px solid black;
     background: none;
     height: 22px;
 }
-
+aside{
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}

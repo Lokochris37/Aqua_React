@@ -13,7 +13,7 @@ function Navbar(){
     },[width])
 
     return (
-      <navbar className={styles.navbar}>
+      <div className={styles.navbar}>
         <div className={styles.container}>
           <figure className={styles.logo__container}>
             <img src="/Aqua_React/img/logo.png" alt="" className={styles.logo} />
@@ -22,7 +22,7 @@ function Navbar(){
             {isCollapse ? <p>A</p> : <Link to={"/Aqua_React/"}>Home</Link>}
           </div>
         </div>
-      </navbar>
+      </div>
     );
 }
 
